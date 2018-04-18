@@ -2,6 +2,7 @@ package edu.ap.spring;
 
 import java.awt.Point;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
@@ -32,7 +33,10 @@ public class Exam {
 	// x-coordinaten uit de lijst van points te berekenen
 	// 1 punt
 	public int sumOfX(List<Point> points) {
-		//return points.stream().map(point -> point.x).mapToInt(Integer::intValue).sum();
+		return points.stream()
+                .map(point -> point.x)
+                .mapToInt(Integer::intValue)
+                .sum();
 	}
 	
 	// Maak gebruik van lambdas en streams om een comma-separated
@@ -40,6 +44,15 @@ public class Exam {
 	// zijn aan twee
 	// 2 punten
 	public String getXOverTwo(List<Point> points) {
-		return "";
-	}
+        /*
+        String s = points.stream()
+                .map(point -> point.x)
+                .filter(x -> x >= 2)
+                .mapToInt(Integer::intValue)
+                .collect(Collectors.joining(","));
+
+        return  s;
+        */
+        return  "";
+    }
 }
