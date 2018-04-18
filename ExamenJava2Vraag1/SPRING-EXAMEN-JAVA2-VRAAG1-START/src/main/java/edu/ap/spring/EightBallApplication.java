@@ -21,6 +21,7 @@ public class EightBallApplication {
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(EightBallApplication.class).headless(false).run(args);
 	}
+
     @Bean
     CommandLineRunner runOnStartup() {
         return (args) -> {

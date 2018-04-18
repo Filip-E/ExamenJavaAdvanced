@@ -30,7 +30,6 @@ public class EightBall {
         Question questionInDb = repository.findByQuestion(question);
         String answer = "";
         if (questionInDb != null) {
-            System.out.println("log:" + questionInDb.getQuestion());
             if(questionInDb.getQuestion().equals(question)) {
                 return questionInDb.getAnswer();
             }
