@@ -4,13 +4,15 @@ import edu.ap.spring.jpa.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @Component
 public class EightBall {
 
 	private Random gen;
-	private int[] randomNumberArray;
+	private List<Integer> randomNumberArray;
     @Autowired
     private QuestionRepository repository;
 
@@ -32,26 +34,33 @@ public class EightBall {
                 return questionInDb.getAnswer();
             }
         }else{
-            answer = answers[randomNumberArray[counter]];
-            counter++;
-            if(counter > 9){
+            if(counter > answers.length){
                 counter = 0;
                 fillRandomNumberArray();
             }
+            answer = answers[randomNumberArray.get(counter)];
+            counter++;
         }
         return answer;
 	}
 
     public EightBall() {
 	    gen = new Random();
-        randomNumberArray = new int[answers.length];
+        //randomNumberArray = new int[answers.length];
+        randomNumberArray = new ArrayList<>();
         fillRandomNumberArray();
         counter = 0;
     }
 
     public void fillRandomNumberArray(){
-        for (int i = 0; i < randomNumberArray.length; i++) {
-            randomNumberArray[i] = gen.nextInt(10);
+	    int randomNumber;
+        for (int i = 0; i < answers.length; i++) {
+
+            randomNumber = gen.nextInt(answers.length);
+            while (randomNumberArray.contains(randomNumber)){
+                randomNumber = gen.nextInt(answers.length);
+            }
+            randomNumberArray.add(i,randomNumber);
         }
     }
 
