@@ -41,6 +41,8 @@ public class EightBall {
             answer = answers[randomNumberArray.get(counter)];
             counter++;
         }
+        Question questionToSave = new Question(question,answer);
+        repository.save(questionToSave);
         return answer;
 	}
 
