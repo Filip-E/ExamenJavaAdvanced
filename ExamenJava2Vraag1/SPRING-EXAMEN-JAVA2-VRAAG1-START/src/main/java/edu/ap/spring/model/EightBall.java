@@ -34,7 +34,7 @@ public class EightBall {
                 return questionInDb.getAnswer();
             }
         }else{
-            if(counter > answers.length){
+            if(counter >= answers.length){
                 counter = 0;
                 fillRandomNumberArray();
             }
@@ -53,6 +53,7 @@ public class EightBall {
     }
 
     public void fillRandomNumberArray(){
+	    randomNumberArray.clear();
 	    int randomNumber;
         for (int i = 0; i < answers.length; i++) {
 
