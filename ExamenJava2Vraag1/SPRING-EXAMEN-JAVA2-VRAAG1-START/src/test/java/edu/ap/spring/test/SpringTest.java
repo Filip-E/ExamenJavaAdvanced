@@ -22,7 +22,7 @@ public class SpringTest {
 	private QuestionRepository repository;
 
 	@Autowired
-	private Singleton singleton;	
+	private Singleton singleton;
 	
     @Test
     public void testQuestion() {
